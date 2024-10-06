@@ -21,8 +21,8 @@ pipeline{
     steps{
           sh "docker-compose -f grid.yaml down"
           sh "docker-compose -f test-suites.yaml down"
-          archiveArtifacts artifacts: './result/flight-reservation/emailable-report.html', followSymlinks: false
-          archiveArtifacts artifacts: './result/vendor-portal/emailable-report.html', followSymlinks: false
+          archiveArtifacts artifacts: 'result/flight-reservation/emailable-report.html', followSymlinks: false
+          archiveArtifacts artifacts: 'result/vendor-portal/emailable-report.html', followSymlinks: false
     }
       }
 
