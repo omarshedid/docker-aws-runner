@@ -4,42 +4,24 @@ pipeline{
     }
 
     stages{
-    stage("Building JAR"){
+    stage("Starting Selenium Grid"){
     steps{
-          sh "mvn clean package -DskipTests=true"
+          sh "docker-compose up"
 
     }
       }
 
 
-    stage("Building Image"){
+    stage("Bringing down grid"){
     steps{
-          sh "docker build -t=omarpixelogic/docker-aws:latest ."
+          sh "docker-compose down"
 
     }
       }
 
-
-  stage("Push Image"){
-      environment{
-          DOCKER_HUB=credentials('dockerhub-creds')
-      }
-  steps{
-        sh 'echo ${DOCKER_HUB_PSW} | docker login -u ${DOCKER_HUB_USR} --password-stdin '
-        sh "docker push omarpixelogic/docker-aws:latest"
-        sh "docker tag omarpixelogic/docker-aws:latest omarpixelogic/docker-aws:${env.BUILD_NUMBER}"
-        sh "docker push omarpixelogic/docker-aws:${env.BUILD_NUMBER}"
-
-  }
-    }
 }
 
-   post{
-   always{
-       sh "docker logout"
-
-   }
-   }
 
 
-    }
+
+
