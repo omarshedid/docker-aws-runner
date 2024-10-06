@@ -1,5 +1,4 @@
 SELENIUM_GRID_ENABLED=true
-TEST_SUITE=flight-reservation.xml
 THREAD_COUNT=4
 HUB_HOST=hub
-BROWSER=chrome
+BROWSER

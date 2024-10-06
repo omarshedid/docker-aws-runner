@@ -3,11 +3,15 @@ pipeline{
     label 'docker'
     }
 
+    parameters {
+      choice choices: ['chrome', 'firefox'], description: 'Please select browser to run test', name: 'BROWSER'
+    }
+
     stages{
 
     stage("Starting Selenium Grid"){
     steps{
-          sh "docker-compose -f grid.yaml up -d"
+          sh "docker-compose -f grid.yaml up --scale ${params.BROWSER}=2 -d"
           sh "docker-compose -f test-suites.yaml up"
     }
       }
