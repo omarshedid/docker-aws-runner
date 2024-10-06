@@ -4,12 +4,12 @@ services:
     image:  omarpixelogic/docker-aws
     shm_size: '2g'
     volumes:
-      - ${PWD}/result:/test-output
+      - ${PWD}/result/vendor-portal:/home/docker-course/test-output
     env_file: .envTestSuites
 
   flight-reservation:
     image:  omarpixelogic/docker-aws
     shm_size: '2g'
     volumes:
-      - ${PWD}/result:/test-output
+      - ${PWD}/result/flight-reservation:/home/docker-course/test-output
     env_file: .envTestSuites
