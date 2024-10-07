@@ -12,7 +12,7 @@ pipeline{
     stage("Starting Selenium Grid"){
     steps{
           sh "docker-compose -f grid.yaml up --scale ${params.BROWSER}=2 -d"
-          sh "docker-compose -f test-suites.yaml up"
+          sh "docker-compose -f test-suites.yaml up --pull=always"
           script{
           if( (fileExists('result/flight-reservation/testng-failed.xml'))|| (fileExists('result/vendor-portal/testng-failed.xml') ) ){
             error('failed tests found')
