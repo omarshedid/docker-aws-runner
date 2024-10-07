@@ -1,7 +1,7 @@
 version: "3"
 services:
   vendor-portal:
-    image:  omarpixelogic/docker-aws
+    image:  omarpixelogic/docker-aws:latest
     shm_size: '2g'
     volumes:
       - ${PWD}/result/vendor-portal:/home/docker-course/test-output
@@ -11,7 +11,7 @@ services:
     env_file: .envTestSuites
 
   flight-reservation:
-    image:  omarpixelogic/docker-aws
+    image:  omarpixelogic/docker-aws:latest
     shm_size: '2g'
     volumes:
       - ${PWD}/result/flight-reservation:/home/docker-course/test-output
