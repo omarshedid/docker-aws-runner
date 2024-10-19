@@ -1,8 +1,5 @@
 pipeline{
-    agent {
-    label 'docker'
-    }
-
+    agent any
     parameters {
       choice choices: ['chrome', 'firefox'], description: 'Please select browser to run test', name: 'BROWSER'
     }
